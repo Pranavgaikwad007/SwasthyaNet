@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    
+    /* Strict Risk Tier Colors - Reserved strictly for clinical risk tags */
+    --tier-green: #16a34a;
+    --tier-yellow: #d97706;
+    --tier-orange: #ea580c;
+    --tier-red: #dc2626;
+
+    /* Theme Primary Tones */
+    --color-primary: #0F9D8B;
+    --color-navy: #0B1220;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: #0f172a;
+    background-color: #f8fafc;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
+
+  button, input, select, textarea, p, span, label, a {
+    font-family: var(--font-body);
+  }
+}
+
+.font-heading {
+  font-family: var(--font-heading) !important;
+}
+
+.font-body {
+  font-family: var(--font-body) !important;
+}
+
+.font-mono {
+  font-family: var(--font-mono) !important;
+}
+
+/* Custom Accessibility Focus State */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #0F9D8B;
+  outline-offset: 2px;
+}
+
+/* Pulse animation for live pressure telemetry */
+@keyframes live-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.7;
+  }
+}
+
+.animate-live-pulse {
+  animation: live-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Subtle signal radar ping */
+@keyframes signal-ping {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 12px rgba(220, 38, 38, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+.animate-pressure-ping {
+  animation: signal-ping 2.2s infinite;
+}
+
+/* Glass card enhancement with physical refraction border */
+.card-clinical {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.05), 0 1px 2px -1px rgba(15, 23, 42, 0.05);
+}
+
+.card-clinical-hover {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-clinical-hover:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
+}
+
+/* Custom scrollbar for data tables & queue */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* High contrast clinical risk badges */
+.badge-tier-green {
+  background-color: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.badge-tier-yellow {
+  background-color: #fefce8;
+  color: #a16207;
+  border: 1px solid #fef08a;
+}
+
+.badge-tier-orange {
+  background-color: #fff7ed;
+  color: #c2410c;
+  border: 1px solid #fed7aa;
+}
+
+.badge-tier-red {
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
